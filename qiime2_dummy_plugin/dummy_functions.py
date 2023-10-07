@@ -1,14 +1,8 @@
 import qiime2
-import biom
-from q2_types.feature_table import FeatureTable, RelativeFrequency, BIOMV210DirFmt, PercentileNormalized
+from q2_types.feature_table import FeatureTable, RelativeFrequency
 
-
-def dummy_function(input_artifact: FeatureTable[RelativeFrequency]) -> FeatureTable[PercentileNormalized] :
+def dummy_function(input_artifact: FeatureTable[RelativeFrequency]) -> FeatureTable[RelativeFrequency]:
     print("dummy_function")
-    # You can perform some processing on the input artifact and return a new artifact
-    norm_biom = biom.Table(
-        data=norm_df.values,
-        observation_ids=norm_df.index,
-        sample_ids=norm_df.columns)
-    return norm_biom
+    # Simply return the input artifact as-is
+    return input_artifact
 
