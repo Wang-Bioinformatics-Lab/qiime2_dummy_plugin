@@ -1,0 +1,8 @@
+qiime2_dummy_plugin/
+├── setup.py
+├── README.md
+├── LICENSE
+├── qiime2_dummy_plugin/
+│   ├── __init__.py
+│   ├── plugin_setup.py
+│   └── dummy_functions.py
