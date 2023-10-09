@@ -1,10 +1,50 @@
 # qiime2_dummy_plugin
 This is a dummy plugin for qiime2
 
+## Install qiime2
+Check if qiime2 update their install document. The default installation is using conda. 
+Currently, the conda install have a problem, so we need to remove a line of the qiime2-2023.7-py38-linux-conda.yml.
+
+### Install conda
+You may reference here for how to install miniconda. \
+https://github.com/Wang-Bioinformatics-Lab/Lab_Internal_Documentation/blob/ea43254cd7c732acf867549198545851600fa97b/docs/env_setup.md#setting-up-miniconda-deprecated
+
+### Prepare the env
+After installing Miniconda and opening a new terminal, make sure you’re running the latest version of conda:
+```
+conda update conda
+```
+Installing wget
+```
+conda install wget
+```
+
+### Install qiime2 with conda
+```
+wget https://data.qiime2.org/distro/core/qiime2-2023.7-py38-linux-conda.yml
+conda env create -n qiime2-2023.7 --file qiime2-2023.7-py38-linux-conda.yml
+```
+
+If they have not update the yml, please remove the line "bioconductor-genomeinfodb" from qiime2-2023.7-py38-linux-conda.yml after wget, then try:
+```
+conda env create -n qiime2-2023.7 --file qiime2-2023.7-py38-linux-conda.yml
+```
+### Activate the environment
+```
+conda activate qiime2-2023.7
+```
+
+### Test your installation
+You can test your installation by activating your QIIME 2 environment and running:
+```
+qiime --help
+```
+If no errors are reported when running this command, the installation was successful!
+
 
 ## to build:
 ```
-pip install .
+pip install -e .
 ```
 
 This should give you something like:
