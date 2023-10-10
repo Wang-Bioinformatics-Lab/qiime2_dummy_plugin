@@ -92,3 +92,21 @@ Commands:
   dummy-function  dummy-function
   ```
 
+
+## To test it
+```
+python setup.py install
+```
+
+After install, use this command:
+
+```
+qiime dummy-plugin dummy-function --i-input-artifact data/test_otu_table.transpose.qza --o-output-artifact data/output.qza
+```
+
+If the output is :
+```
+Saved FeatureTable[RelativeFrequency] to: data/output.qza
+```
+
+It proves the build is correct. 

@@ -1,6 +1,12 @@
 import qiime2
-from .dummy_functions import dummy_function
-from q2_types.feature_table import FeatureTable, RelativeFrequency, BIOMV210DirFmt, PercentileNormalized
+import biom
+import qiime2.plugin
+from q2_types.feature_table import FeatureTable, RelativeFrequency
+
+
+def dummy_function(input_artifact: biom.Table) -> biom.Table:
+    # this is a dummy plugin, just do nothing but to have a return to make sure it is working
+    return input_artifact
 
 plugin = qiime2.plugin.Plugin(
     name='dummy-plugin',
@@ -15,14 +21,10 @@ plugin.methods.register_function(
     function=dummy_function,
     inputs={'input_artifact': FeatureTable[RelativeFrequency]},
     parameters={},  # Add parameters if necessary
-    outputs=[('perc_norm_table', FeatureTable[PercentileNormalized])],
+    outputs=[('output_artifact', FeatureTable[RelativeFrequency])],
     output_descriptions={
-        'perc_norm_table': ('The percentile-normalized OTU table. '
-            'If multiple batches were given, this table contains '
-            'data which was percentile-normalized within each batch and '
-            'then merged. Note that some OTUs may be filtered from certain '
-            'batches if they are too infrequent within that batch. These '
-            'will be NaN in the output OTU table.')},
+        'output_artifact': 'Description of the output artifact.'
+    },
     name='dummy-function',
     description='A description of your function.',
 )
